@@ -78,7 +78,7 @@ app.post("/api/student", (req, res) => {
     if (student.length === 1) {
       const newStudentArr = studentArr.filter((s) => s.id != req.params.id);
       studentArr = newStudentArr;
-      res.status(200).send("ok") ;
+      res.send("ok") ;
     } else {
       res.sendStatus(404) ;
     }
