@@ -47,6 +47,7 @@ app.post("/api/student", (req, res) => {
 });
 
 app.put("/api/student/:id", (req, res) => {
+
   const student = studentArr.filter((s) => s.id == req.params.id);
   if (req.body !== {} && student.length == 1) {
     const { name, currentClass, division } = req.body;
@@ -63,6 +64,8 @@ app.put("/api/student/:id", (req, res) => {
     let newStudentArr = studentArr.filter((s) => s.id != req.params.id);
     newStudentArr.push(student[0]);
     studentArr = [...newStudentArr];
+    res.set({'content-type':'application/x-www-form-urlencoded'}
+    );
     res.send({ name: student[0].name });
   } else {
     res.sendStatus(400);
